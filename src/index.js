@@ -95,7 +95,10 @@ const createSimulation = ({element = document.body, wind = DEFAULT_WIND, loop, w
             return Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
         },
         getHeading(){
-            return (360 - Math.abs(boat.angle * (180/Math.PI)) + 90)% 360;
+            const degrees =  (boat.angle * 180 / Math.PI) % 360;
+            const normalized = degrees < 0 ? Math.abs(degrees) :  360-degrees;
+            return (450 - normalized) % 360;
+
         }
     };
 
