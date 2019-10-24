@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Static Sea Drone Test</title>
+    <script src="./dist/sea-drone.js"></script>
+</head>
+<body>
+<script>
+
+    function loop({control, position, map}){
+
+        const heading =  position.getHeading();
+
+        let rudder = 0;
+
+        if(heading > 1 && heading <= 180){
+            rudder = heading > 45 ? 0.5 : 0.05;
+            console.log('turn left', rudder, heading);
+        } else if(heading < 359 && heading > 180){
+            rudder = heading < 315 ? -0.5 : -0.05;
+            console.log('turn right', rudder, heading);
+        }
+
+        control.setRudder(rudder);
+        control.setVelocity(1.0);
+
+        // console.log(position.getHeading());
+        // console.log(position.getVelocity());
+        // console.log(position.getPosition());
+        // console.log(map.getFence());
+
+    }
+
+    const simulation = createSimulation({loop});
+    simulation.start();
+
+    setTimeout(()=>{ simulation.stop()}, 10000);
+</script>
+</body>
+</html>

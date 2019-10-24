@@ -1,0 +1,23 @@
+{
+  "name": "sea-drone-simulation",
+  "version": "0.0.1",
+  "description": "Simple simulation to test sea drone control and navigation routines.",
+  "main": "dist/sea-drone.js",
+  "files" : [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Linner",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "matter-attractors": "^0.1.6",
+    "matter-js": "^0.14.2",
+    "poly-decomp": "^0.3.0"
+  }
+}
