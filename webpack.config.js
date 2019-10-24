@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: './src/index.js',
@@ -9,4 +10,8 @@ module.exports = {
         library: 'sea-drone'
         //libraryTarget: 'umd'
     },
+    devtool: false,
+    plugins: [
+        new webpack.SourceMapDevToolPlugin({})
+    ]
 };
