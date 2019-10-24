@@ -7,11 +7,11 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'sea-drone.js',
-        library: 'seadrone',
+        library: 'sea-drone',
         libraryTarget: 'umd'
     },
-    devtool: false,
-    plugins: [
-        new webpack.SourceMapDevToolPlugin({})
-    ]
+    // devtool: false,
+    // plugins: [
+    //     new webpack.SourceMapDevToolPlugin({})
+    // ]
 };

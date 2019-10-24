@@ -35,7 +35,7 @@ const shape = [
         }))
 ];
 
-const createSimulation = ({element = document.body, wind = DEFAULT_WIND, width = 1000, height = 1000} = {}) => {
+const createSimulation = ({element = document.body, wind = DEFAULT_WIND, loop, width = 1000, height = 1000} = {}) => {
 
     const runner = Runner.create();
     const world = World.create({gravity: {x: 0, y: 0, scale: 0}});
