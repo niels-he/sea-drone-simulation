@@ -3,15 +3,18 @@
   "version": "0.0.1",
   "description": "Simple simulation to test sea drone control and navigation routines.",
   "main": "dist/sea-drone.js",
-  "files" : [
+  "files": [
     "dist/**/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./node_modules/webpack/bin/webpack",
+    "doc" : "jsdoc2md ./src/index.js > readme.md"
   },
   "author": "David Linner",
   "license": "MIT",
   "devDependencies": {
+    "jsdoc-to-markdown": "^5.0.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
   },

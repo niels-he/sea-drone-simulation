@@ -8,12 +8,12 @@
 <body>
 <script>
 
-    function loop({control, position, map}){
+    function loop({control, position, map, detector, container}){
 
         const heading =  position.getHeading();
-        console.log(heading);
+        //console.log(heading);
 
-        let rudder = 0.5;
+        let rudder = 0.2;
 
         // if(heading > 1 && heading <= 180){
         //     rudder = heading > 45 ? 0.5 : 0.05;
@@ -24,16 +24,21 @@
         // }
 
         control.setRudder(rudder);
-        control.setVelocity(0.5);
+        control.setVelocity(0.3);
 
-        console.log(heading);
+        //console.log(heading);
         // console.log(position.getVelocity());
         // console.log(position.getPosition());
         // console.log(map.getFence());
 
+        detector.getDetectedWaste().forEach(({direction, proximity}) => console.log(direction, proximity));
+
+        console.log(container.getWeight());
+
+
     }
 
-    const simulation = createSimulation({loop});
+    const simulation = createSimulation({loop, width: 500, height: 500, numberOfBottles: 6});
     simulation.start();
 
     //setTimeout(()=>{ simulation.stop()}, 10000);
