@@ -42,7 +42,7 @@ const normalizeAngle = angle => {
   return (450 - normalized) % 360;
 };
 
-const boatShape = shapeFromSilhouette(BOAT_SILHOUETTE, boatShape);
+const boatShape = shapeFromSilhouette(BOAT_SILHOUETTE, STRETCH);
 const bottleShape = shapeFromSilhouette(BOTTLE_SILHOUETTE, 5);
 
 /**
