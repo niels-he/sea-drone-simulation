@@ -18,10 +18,10 @@ use(MatterAttractors);
 
 const DEFAULT_WIND = { x: 0.0, y: 0 };
 
-const BOAT_SILHOUETTE = [2, 4, 20, 20, 3, 0];
+const BOAT_SILHOUETTE = [2, 4, 5, 5, 3, 0];
 const BOTTLE_SILHOUETTE = [2, 2, 2, 2];
 
-const STRETCH = 7;
+const STRETCH = 50;
 
 const MAX_FORCE = 0.025;
 
@@ -42,7 +42,7 @@ const normalizeAngle = angle => {
   return (450 - normalized) % 360;
 };
 
-const boatShape = shapeFromSilhouette(BOAT_SILHOUETTE, STRETCH);
+const boatShape = shapeFromSilhouette(BOAT_SILHOUETTE, boatShape);
 const bottleShape = shapeFromSilhouette(BOTTLE_SILHOUETTE, 5);
 
 /**
