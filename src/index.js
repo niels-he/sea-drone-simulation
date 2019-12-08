@@ -141,9 +141,13 @@ const createSimulation = ({
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
       velocityOne = value * 5;
     },
-    setVelocityOne(value) {
+    setVelocityTwo(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
       velocityTwo = value * 5;
+    },
+    setVelocity(value) {
+      setVelocityTwo(value);
+      setVelocityOne(value);
     }
   };
 
@@ -157,6 +161,10 @@ const createSimulation = ({
       return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     },
     getVelocityTwo() {
+      const { x, y } = boat.velocityTwo;
+      return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+    },
+    getVelocity() {
       const { x, y } = boat.velocityTwo;
       return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     },
