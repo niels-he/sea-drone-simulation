@@ -248,6 +248,7 @@ const createSimulation = ({
       x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
       y: y2 // y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
     };
+    const force = MAX_FORCE * velocity;
 
     Body.applyForce(boat, propellerPositionOne, {
       x: force,
@@ -260,7 +261,6 @@ const createSimulation = ({
     });
 
     // const angle = boat.angle + (Math.PI / 2) * rudder;
-    //   const force = MAX_FORCE * velocity;
 
     // Body.applyForce(boat, propellerPosition, {
     //   x: Math.cos(angle) * force,
