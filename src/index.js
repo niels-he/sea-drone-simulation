@@ -269,12 +269,12 @@ const createSimulation = ({
     Body.applyForce(boat, propellerPosition /*boat.position*/, {
       x:
         Math.cos(boat.angle + ((rudder < 0 ? 1 : -1) * Math.PI) / 2) *
-        force *
+        forceOne *
         0.8 *
         Math.abs(rudder),
       y:
         Math.sin(boat.angle + ((rudder < 0 ? 1 : -1) * Math.PI) / 2) *
-        force *
+        forceOne *
         0.8 *
         Math.abs(rudder)
     });
