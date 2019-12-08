@@ -134,7 +134,7 @@ const createSimulation = ({
   Render.run(render);
 
   let velocityOne = 5;
-  let velocityTwo = 5;
+  let velocityTwo = 0;
 
   const control = {
     setVelocityOne(value) {
