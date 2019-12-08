@@ -146,12 +146,12 @@ const createSimulation = ({
       velocityTwo = value * 5;
     },
     setVelocity(value) {
-      this.setVelocityTwo(5);
-      this.setVelocityOne(5);
+      this.setVelocityTwo(1);
+      this.setVelocityOne(1);
     },
     setRudder(v) {
-      this.setVelocityTwo(5);
-      this.setVelocityOne(-5);
+      this.setVelocityTwo(1);
+      this.setVelocityOne(-1);
     }
   };
 
