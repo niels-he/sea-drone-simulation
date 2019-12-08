@@ -21,7 +21,7 @@ const DEFAULT_WIND = { x: 0.0, y: 0 };
 const BOAT_SILHOUETTE = [20, 20];
 const BOTTLE_SILHOUETTE = [2, 2, 2, 2];
 
-const STRETCH = 40;
+const STRETCH = 70;
 
 const MAX_FORCE = 0.025;
 
