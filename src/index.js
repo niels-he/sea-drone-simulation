@@ -139,7 +139,7 @@ const createSimulation = ({
   const control = {
     setVelocity(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      velocity = value;
+      velocity = value + 10;
     },
     setRudder(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid rudder value.';
