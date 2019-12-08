@@ -139,36 +139,19 @@ const createSimulation = ({
   const control = {
     setVelocityOne(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      velocityOne = value * 5;
+      velocityOne = value;
     },
     setVelocityTwo(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      velocityTwo = value * 5;
+      velocityTwo = value;
     },
     setVelocity(value) {
-      this.setVelocityTwo(1);
+      this.setVelocityTwo(-1);
       this.setVelocityOne(1);
     },
     setRudder(v) {
       this.setVelocityTwo(1);
       this.setVelocityOne(-1);
-
-      setTimeout(() => {
-        this.setVelocityTwo(1);
-        this.setVelocityOne(-1);
-      }, 2000);
-      setTimeout(() => {
-        this.setVelocityTwo(1);
-        this.setVelocityOne(-1);
-      }, 4000);
-      setTimeout(() => {
-        this.setVelocityTwo(1);
-        this.setVelocityOne(1);
-      }, 6000);
-      setTimeout(() => {
-        this.setVelocityTwo(-1);
-        this.setVelocityOne(1);
-      }, 8000);
     }
   };
 
