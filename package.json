@@ -21,6 +21,7 @@
   "dependencies": {
     "matter-attractors": "^0.1.6",
     "matter-js": "^0.14.2",
+    "pathseg": "^1.2.0",
     "poly-decomp": "^0.3.0"
   }
 }

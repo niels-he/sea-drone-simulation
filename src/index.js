@@ -1,6 +1,7 @@
 import Matter from 'matter-js';
 import MatterAttractors from 'matter-attractors';
 import decomp from 'poly-decomp';
+import 'pathseg';
 
 const {
   Engine,
@@ -47,15 +48,15 @@ const normalizeAngle = angle => {
 // const boatShape = shapeFromSilhouette(BOAT_SILHOUETTE, STRETCH);
 const boatShape = Vertices.create(
   Svg.pathToVertices(
-    `<path
-    id="Path_1"
-    data-name="Path 1"
-    d="M267.78,782,200.121,676.516V17.745L267.78-85.037,335.974,17.745v160.24H675.445V17.745L744.465-85.037,812.531,17.745V676.516L744.465,782,675.445,676.516V594.989H335.974v81.526Z"
-    transform="translate(-199.621 85.944)"
-    fill="none"
-    stroke="#707070"
-    stroke-width="1"
-  />`
+    <path
+      id="Path_1"
+      data-name="Path 1"
+      d="M267.78,782,200.121,676.516V17.745L267.78-85.037,335.974,17.745v160.24H675.445V17.745L744.465-85.037,812.531,17.745V676.516L744.465,782,675.445,676.516V594.989H335.974v81.526Z"
+      transform="translate(-199.621 85.944)"
+      fill="none"
+      stroke="#707070"
+      stroke-width="1"
+    />
   )
 );
 const bottleShape = shapeFromSilhouette(BOTTLE_SILHOUETTE, 5);
