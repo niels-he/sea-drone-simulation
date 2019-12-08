@@ -146,8 +146,8 @@ const createSimulation = ({
       velocityTwo = value * 5;
     },
     setVelocity(value) {
-      setVelocityTwo(value);
-      setVelocityOne(value);
+      this.setVelocityTwo(value);
+      this.setVelocityOne(value);
     }
   };
 
