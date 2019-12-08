@@ -133,8 +133,8 @@ const createSimulation = ({
   Engine.run(engine);
   Render.run(render);
 
-  let velocityOne = 5;
-  let velocityTwo = -5;
+  let velocityOne = 0;
+  let velocityTwo = 0;
 
   const control = {
     setVelocityOne(value) {
@@ -146,12 +146,12 @@ const createSimulation = ({
       velocityTwo = value * 5;
     },
     setVelocity(value) {
-      // old
-      //   this.setVelocityTwo(value);
-      //   this.setVelocityOne(value);
+      this.setVelocityTwo(5);
+      this.setVelocityOne(5);
     },
     setRudder(v) {
-      // old
+      this.setVelocityTwo(5);
+      this.setVelocityOne(-5);
     }
   };
 
@@ -244,17 +244,13 @@ const createSimulation = ({
     const { x: x1, y: y1 } = boat.vertices[0];
     const { x: x2, y: y2 } = boat.vertices[boat.vertices.length - 1];
 
-    const propellerPosition = {
-      x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
-      y: y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
-    };
     const propellerPositionOne = {
       x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
-      y: y1 // y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
+      y: y1
     };
     const propellerPositionTwo = {
       x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
-      y: y2 // y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
+      y: y2
     };
 
     const forceOne = MAX_FORCE * velocityOne;
