@@ -11,6 +11,7 @@ const {
   Runner,
   Events,
   Vector,
+  Vertices,
   use
 } = Matter;
 
