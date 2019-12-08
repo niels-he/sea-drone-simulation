@@ -261,9 +261,22 @@ const createSimulation = ({
     const forceOne = MAX_FORCE * velocityOne;
     const forceTwo = MAX_FORCE * velocityTwo;
 
-    Body.applyForce(boat, propellerPosition, {
-      x: Math.cos(angle) * forceOne,
-      y: Math.sin(angle) * forceOne
+    // Body.applyForce(boat, propellerPosition, {
+    //   x: Math.cos(angle) * forceOne,
+    //   y: Math.sin(angle) * forceOne
+    // });
+
+    Body.applyForce(boat, propellerPosition /*boat.position*/, {
+      x:
+        Math.cos(boat.angle + ((rudder < 0 ? 1 : -1) * Math.PI) / 2) *
+        force *
+        0.8 *
+        Math.abs(rudder),
+      y:
+        Math.sin(boat.angle + ((rudder < 0 ? 1 : -1) * Math.PI) / 2) *
+        force *
+        0.8 *
+        Math.abs(rudder)
     });
 
     // Body.applyForce(boat, propellerPositionOne, {
