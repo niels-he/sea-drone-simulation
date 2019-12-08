@@ -12,6 +12,7 @@ const {
   Events,
   Vector,
   Vertices,
+  Svg,
   use
 } = Matter;
 
@@ -43,7 +44,21 @@ const normalizeAngle = angle => {
   return (450 - normalized) % 360;
 };
 
-const boatShape = Vertices.fromPath('100 0 75 50 100 100 25 100 0 50 25 0');
+// const boatShape = shapeFromSilhouette(BOAT_SILHOUETTE, STRETCH);
+const boatShape = Vertices.create(
+  Svg.pathToVertices(
+    `<path
+    id="Path_1"
+    data-name="Path 1"
+    d="M267.78,782,200.121,676.516V17.745L267.78-85.037,335.974,17.745v160.24H675.445V17.745L744.465-85.037,812.531,17.745V676.516L744.465,782,675.445,676.516V594.989H335.974v81.526Z"
+    transform="translate(-199.621 85.944)"
+    fill="none"
+    stroke="#707070"
+    stroke-width="1"
+  />`
+  )
+);
+const boatShape = shapeFromSilhouette(BOAT_SILHOUETTE, STRETCH);
 const bottleShape = shapeFromSilhouette(BOTTLE_SILHOUETTE, 5);
 
 /**
