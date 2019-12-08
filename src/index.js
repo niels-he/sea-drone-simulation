@@ -241,7 +241,7 @@ const createSimulation = ({
       y: y1
     };
     const propellerPositionTwo = {
-      x: x2, // x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
+      x: x1, // x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
       y: y2
     };
 
