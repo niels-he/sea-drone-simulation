@@ -1,7 +1,6 @@
 import Matter from 'matter-js';
 import MatterAttractors from 'matter-attractors';
 import decomp from 'poly-decomp';
-import 'pathseg';
 
 const {
   Engine,
@@ -12,8 +11,6 @@ const {
   Runner,
   Events,
   Vector,
-  Vertices,
-  Svg,
   use
 } = Matter;
 
@@ -21,40 +18,7 @@ use(MatterAttractors);
 
 const DEFAULT_WIND = { x: 0.0, y: 0 };
 
-const BOAT_SILHOUETTE = [
-  185.5,
-  439,
-  14.5,
-  342,
-  78.5,
-  139,
-  178.5,
-  192,
-  189.5,
-  440,
-  342.5,
-  435,
-  292.5,
-  149,
-  181.5,
-  192,
-  176.5,
-  165,
-  135.5,
-  110,
-  120.5,
-  60,
-  45.5,
-  73,
-  383.5,
-  131,
-  219.5,
-  19,
-  209.5,
-  65,
-  186.5,
-  153
-];
+const BOAT_SILHOUETTE = [20, 20];
 const BOTTLE_SILHOUETTE = [2, 2, 2, 2];
 
 const STRETCH = 7;
