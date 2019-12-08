@@ -133,17 +133,17 @@ const createSimulation = ({
   Engine.run(engine);
   Render.run(render);
 
-  let velocityOne = 1;
+  let velocityOne = 5;
   let velocityTwo = 0;
 
   const control = {
     setVelocityOne(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      velocityOne = value * 3;
+      velocityOne = value * 5;
     },
     setVelocityTwo(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      velocityTwo = value * 3;
+      velocityTwo = value * 5;
     },
     setVelocity(value) {
       // old
