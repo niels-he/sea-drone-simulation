@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node ./node_modules/webpack/bin/webpack",
-    "doc" : "jsdoc2md ./src/index.js > readme.md"
+    "doc": "jsdoc2md ./src/index.js > readme.md"
   },
   "author": "David Linner",
   "license": "MIT",
