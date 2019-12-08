@@ -43,7 +43,7 @@ const normalizeAngle = angle => {
   return (450 - normalized) % 360;
 };
 
-const boatShape = shapeFromSilhouette(BOAT_SILHOUETTE, STRETCH);
+const boatShape = Vertices.fromPath('100 0 75 50 100 100 25 100 0 50 25 0');
 const bottleShape = shapeFromSilhouette(BOTTLE_SILHOUETTE, 5);
 
 /**
@@ -94,16 +94,15 @@ const createSimulation = ({
     }
   };
 
-  const boat = Vertices.fromPath('100 0 75 50 100 100 25 100 0 50 25 0');
-  //   const boat = Bodies.fromVertices(
-  //     width / 2 - (BOAT_SILHOUETTE.length / 2) * STRETCH,
-  //     height / 2,
-  //     boatShape,
-  //     {
-  //       ...bodyProps,
-  //       density: 3.0
-  //     }
-  //   );
+  const boat = Bodies.fromVertices(
+    width / 2 - (BOAT_SILHOUETTE.length / 2) * STRETCH,
+    height / 2,
+    boatShape,
+    {
+      ...bodyProps,
+      density: 3.0
+    }
+  );
 
   let bottles = [];
   for (let i = 0; i < numberOfBottles; i++) {
