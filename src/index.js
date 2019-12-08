@@ -58,7 +58,6 @@ const boatShape = Vertices.create(
   />`
   )
 );
-const boatShape = shapeFromSilhouette(BOAT_SILHOUETTE, STRETCH);
 const bottleShape = shapeFromSilhouette(BOTTLE_SILHOUETTE, 5);
 
 /**
