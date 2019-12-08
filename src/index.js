@@ -241,12 +241,12 @@ const createSimulation = ({
     const { x: x2, y: y2 } = boat.vertices[boat.vertices.length - 1];
 
     const propellerPositionOne = {
-      x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
-      y: y1 // y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
+      x: x1, // x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
+      y: y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
     };
     const propellerPositionTwo = {
-      x: x2 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
-      y: y2 // y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
+      x: x2, // x1> x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
+      y: y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
     };
     const forceOne = MAX_FORCE * velocityOne;
     const forceTwo = MAX_FORCE * velocityTwo;
