@@ -258,8 +258,8 @@ const createSimulation = ({
     const forceTwo = MAX_FORCE * velocityTwo;
 
     Body.applyForce(boat, propellerPosition, {
-      x: Math.cos(angle) * force,
-      y: Math.sin(angle) * force
+      x: Math.cos(angle) * forceOne,
+      y: Math.sin(angle) * forceOne
     });
 
     Body.applyForce(boat, propellerPositionOne, {
