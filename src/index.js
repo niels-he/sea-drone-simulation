@@ -21,7 +21,7 @@ const DEFAULT_WIND = { x: 0.0, y: 0 };
 const BOAT_SILHOUETTE = [20, 20];
 const BOTTLE_SILHOUETTE = [2, 2, 2, 2];
 
-const STRETCH = 70;
+const STRETCH = 60;
 
 const MAX_FORCE = 0.025;
 
@@ -139,7 +139,7 @@ const createSimulation = ({
   const control = {
     setVelocity(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      velocity = value + 10;
+      velocity = value * 10;
     },
     setRudder(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid rudder value.';
