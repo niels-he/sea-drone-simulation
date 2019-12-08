@@ -245,6 +245,10 @@ const createSimulation = ({
     const { x: x1, y: y1 } = boat.vertices[0];
     const { x: x2, y: y2 } = boat.vertices[boat.vertices.length - 1];
 
+    const propellerPosition = {
+      x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
+      y: y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
+    };
     const propellerPositionOne = {
       x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
       y: y1 // y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
@@ -262,10 +266,10 @@ const createSimulation = ({
       y: Math.sin(angle) * forceOne
     });
 
-    Body.applyForce(boat, propellerPositionOne, {
-      x: forceOne,
-      y: forceOne
-    });
+    // Body.applyForce(boat, propellerPositionOne, {
+    //   x: forceOne,
+    //   y: forceOne
+    // });
 
     // Body.applyForce(boat, propellerPositionTwo, {
     //   x: forceTwo,
