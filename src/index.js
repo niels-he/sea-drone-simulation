@@ -93,15 +93,16 @@ const createSimulation = ({
     }
   };
 
-  const boat = Bodies.fromVertices(
-    width / 2 - (BOAT_SILHOUETTE.length / 2) * STRETCH,
-    height / 2,
-    boatShape,
-    {
-      ...bodyProps,
-      density: 3.0
-    }
-  );
+  const boat = Vertices.fromPath('100 0 75 50 100 100 25 100 0 50 25 0');
+  //   const boat = Bodies.fromVertices(
+  //     width / 2 - (BOAT_SILHOUETTE.length / 2) * STRETCH,
+  //     height / 2,
+  //     boatShape,
+  //     {
+  //       ...bodyProps,
+  //       density: 3.0
+  //     }
+  //   );
 
   let bottles = [];
   for (let i = 0; i < numberOfBottles; i++) {
