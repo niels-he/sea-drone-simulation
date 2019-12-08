@@ -46,18 +46,8 @@ const normalizeAngle = angle => {
 };
 
 // const boatShape = shapeFromSilhouette(BOAT_SILHOUETTE, STRETCH);
-const boatShape = Vertices.create(
-  Svg.pathToVertices(
-    <path
-      id="Path_1"
-      data-name="Path 1"
-      d="M267.78,782,200.121,676.516V17.745L267.78-85.037,335.974,17.745v160.24H675.445V17.745L744.465-85.037,812.531,17.745V676.516L744.465,782,675.445,676.516V594.989H335.974v81.526Z"
-      transform="translate(-199.621 85.944)"
-      fill="none"
-      stroke="#707070"
-      stroke-width="1"
-    />
-  )
+const boatShape = Vertices.fromPath(
+  '185.5,439,14.5,342,78.5,139,178.5,192,189.5,440,342.5,435,292.5,149,181.5,192,176.5,165,135.5,110,120.5,60,45.5,73,383.5,131,219.5,19,209.5,65,186.5,153'
 );
 const bottleShape = shapeFromSilhouette(BOTTLE_SILHOUETTE, 5);
 
