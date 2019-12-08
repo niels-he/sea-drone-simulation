@@ -152,6 +152,23 @@ const createSimulation = ({
     setRudder(v) {
       this.setVelocityTwo(1);
       this.setVelocityOne(-1);
+
+      setTimeout(() => {
+        this.setVelocityTwo(1);
+        this.setVelocityOne(-1);
+      }, 2000);
+      setTimeout(() => {
+        this.setVelocityTwo(1);
+        this.setVelocityOne(-1);
+      }, 4000);
+      setTimeout(() => {
+        this.setVelocityTwo(1);
+        this.setVelocityOne(1);
+      }, 6000);
+      setTimeout(() => {
+        this.setVelocityTwo(-1);
+        this.setVelocityOne(1);
+      }, 8000);
     }
   };
 
