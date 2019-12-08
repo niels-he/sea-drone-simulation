@@ -107,8 +107,8 @@ const createSimulation = ({
   for (let i = 0; i < numberOfBottles; i++) {
     bottles.push(
       Bodies.fromVertices(
-        20 + (width - 40) * Math.random(),
-        20 + (height - 40) * Math.random(),
+        20 + (width - 30) * Math.random(),
+        20 + (height - 30) * Math.random(),
         bottleShape,
         {
           ...bodyProps,
@@ -146,12 +146,8 @@ const createSimulation = ({
       velocityTwo = value * 40;
     },
     setVelocity(value) {
-      this.setVelocityTwo(-1);
       this.setVelocityOne(1);
-    },
-    setRudder(v) {
-      this.setVelocityTwo(1);
-      this.setVelocityOne(-1);
+      this.setVelocityTwo(-1);
     }
   };
 
@@ -165,10 +161,6 @@ const createSimulation = ({
       return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     },
     getVelocityTwo() {
-      const { x, y } = boat.velocityTwo;
-      return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-    },
-    getVelocity() {
       const { x, y } = boat.velocityTwo;
       return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     },
@@ -245,11 +237,11 @@ const createSimulation = ({
     const { x: x2, y: y2 } = boat.vertices[boat.vertices.length - 1];
 
     const propellerPositionOne = {
-      x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
+      x: x1, // > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
       y: y1
     };
     const propellerPositionTwo = {
-      x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
+      x: x2, // x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
       y: y2
     };
 
