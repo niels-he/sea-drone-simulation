@@ -133,17 +133,17 @@ const createSimulation = ({
   Engine.run(engine);
   Render.run(render);
 
-  let rudder = 0,
-    velocity = 0;
+  let velocityOne = 0;
+  let velocityTwo = 0;
 
   const control = {
-    setVelocity(value) {
+    setVelocityOne(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      velocity = value * 10;
+      velocityOne = value * 5;
     },
-    setRudder(value) {
-      if (value < -1.0 || value > 1.0) throw 'Invalid rudder value.';
-      rudder = value;
+    setVelocityOne(value) {
+      if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
+      velocityTwo = value * 5;
     }
   };
 
@@ -152,8 +152,12 @@ const createSimulation = ({
       const { x, y } = boat.position;
       return { longitude: x, latitude: y };
     },
-    getVelocity() {
-      const { x, y } = boat.velocity;
+    getVelocityOne() {
+      const { x, y } = boat.velocityOne;
+      return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+    },
+    getVelocityTwo() {
+      const { x, y } = boat.velocityTwo;
       return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     },
     getHeading() {
@@ -215,36 +219,58 @@ const createSimulation = ({
 
     // call control loop
     if (typeof loop === 'function') {
-      loop({ control, position, map, detector, container });
+      loop({
+        control,
+        position,
+        map,
+        detector,
+        container
+      });
     }
 
     // transform changes to controller variables to forces and apply forces
     const { x: x1, y: y1 } = boat.vertices[0];
     const { x: x2, y: y2 } = boat.vertices[boat.vertices.length - 1];
-    const propellerPosition = {
+
+    const propellerPositionOne = {
       x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
-      y: y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
+      y: y1 // y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
+    };
+    const propellerPositionTwo = {
+      x: x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
+      y: y2 // y1 > y2 ? y2 + (y1 - y2) / 2 : y1 + (y2 - y1) / 2
     };
 
-    const angle = boat.angle + (Math.PI / 2) * rudder;
-    const force = MAX_FORCE * velocity;
-    Body.applyForce(boat, propellerPosition, {
-      x: Math.cos(angle) * force,
-      y: Math.sin(angle) * force
+    Body.applyForce(boat, propellerPositionOne, {
+      x: force,
+      y: force
     });
 
-    Body.applyForce(boat, propellerPosition /*boat.position*/, {
-      x:
-        Math.cos(boat.angle + ((rudder < 0 ? 1 : -1) * Math.PI) / 2) *
-        force *
-        0.8 *
-        Math.abs(rudder),
-      y:
-        Math.sin(boat.angle + ((rudder < 0 ? 1 : -1) * Math.PI) / 2) *
-        force *
-        0.8 *
-        Math.abs(rudder)
+    Body.applyForce(boat, propellerPositionTwo, {
+      x: force,
+      y: force
     });
+
+    // const angle = boat.angle + (Math.PI / 2) * rudder;
+    //   const force = MAX_FORCE * velocity;
+
+    // Body.applyForce(boat, propellerPosition, {
+    //   x: Math.cos(angle) * force,
+    //   y: Math.sin(angle) * force
+    // });
+
+    // Body.applyForce(boat, propellerPosition /*boat.position*/, {
+    //   x:
+    //     Math.cos(boat.angle + ((rudder < 0 ? 1 : -1) * Math.PI) / 2) *
+    //     force *
+    //     0.8 *
+    //     Math.abs(rudder),
+    //   y:
+    //     Math.sin(boat.angle + ((rudder < 0 ? 1 : -1) * Math.PI) / 2) *
+    //     force *
+    //     0.8 *
+    //     Math.abs(rudder)
+    // });
   });
 
   return {
