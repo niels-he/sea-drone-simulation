@@ -139,15 +139,13 @@ const createSimulation = ({
   const control = {
     setVelocityLeft(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      velocityLeft = value * 40;
+      // else if (value === 0) velocityLeft = 0;
+      else velocityLeft = value * 40;
     },
     setVelocityRight(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      velocityRight = value * 40;
-    },
-    setVelocity(value) {
-      this.setVelocityOne(-1);
-      this.setVelocityTwo(-1);
+      // else if (value === 0) velocityRight = 0;
+      else velocityLeft = value * 40;
     }
   };
 
