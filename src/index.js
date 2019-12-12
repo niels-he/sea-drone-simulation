@@ -145,7 +145,7 @@ const createSimulation = ({
     setVelocityRight(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
       // else if (value === 0) velocityRight = 0;
-      else velocityLeft = value * 40;
+      else velocityRight = value * 40;
     }
   };
 
