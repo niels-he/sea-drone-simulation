@@ -139,13 +139,11 @@ const createSimulation = ({
   const control = {
     setVelocityLeft(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      // else if (value === 0) velocityLeft = 0;
-      else velocityLeft = value * 40;
+      velocityLeft = value * 40;
     },
     setVelocityRight(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
-      // else if (value === 0) velocityRight = 0;
-      else velocityRight = value * 40;
+      velocityRight = value * 40;
     }
   };
 
@@ -243,17 +241,17 @@ const createSimulation = ({
       y: y2
     };
 
-    const forceOne = MAX_FORCE * velocityLeft;
-    const forceTwo = MAX_FORCE * velocityRight;
+    const forceLeft = MAX_FORCE * velocityLeft;
+    const forceRight = MAX_FORCE * velocityRight;
 
     Body.applyForce(boat, propellerPositionOne, {
-      x: Math.cos(boat.angle) * forceOne,
-      y: Math.sin(boat.angle) * forceOne
+      x: Math.cos(boat.angle) * forceLeft,
+      y: Math.sin(boat.angle) * forceLeft
     });
 
     Body.applyForce(boat, propellerPositionTwo, {
-      x: Math.cos(boat.angle) * forceTwo,
-      y: Math.sin(boat.angle) * forceTwo
+      x: Math.cos(boat.angle) * forceRight,
+      y: Math.sin(boat.angle) * forceRight
     });
   });
 
