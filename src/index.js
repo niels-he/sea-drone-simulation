@@ -69,7 +69,7 @@ const createSimulation = ({
 } = {}) => {
   const runner = Runner.create();
   const world = World.create({ gravity: { x: 0, y: 0, scale: 0 } });
-  const engine = Engine.create({ world, timing: { timeScale: 1 } });
+  const engine = Engine.create({ world, timing: { timeScale: 5 } });
   const render = Render.create({
     element,
     engine,
