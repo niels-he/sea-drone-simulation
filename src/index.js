@@ -67,10 +67,9 @@ const createSimulation = ({
   detectorAngle = 45,
   detectorRange = 80
 } = {}) => {
-  const EngineWithCustomTimeScale = Engine.timing.timeScale(5);
   const runner = Runner.create();
   const world = World.create({ gravity: { x: 0, y: 0, scale: 0 } });
-  const engine = EngineWithCustomTimeScale.create({ world });
+  const engine = Engine.create({ world, timing: { timeScale: 5 } });
   const render = Render.create({
     element,
     engine,
@@ -131,7 +130,7 @@ const createSimulation = ({
 
   World.add(engine.world, [boat, ...bottles, bottom, top, left, right]);
 
-  EngineWithCustomTimeScale.run(engine);
+  Engine.run(engine);
   Render.run(render);
 
   let velocityLeft = 0;
