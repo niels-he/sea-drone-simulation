@@ -50,8 +50,8 @@ const bottleShape = shapeFromSilhouette(BOTTLE_SILHOUETTE, 5);
  * @param {function} loop - Function representing the main control loop
  * @param {DOMElement} element - DOM element to render the simulation canvas to. Default: document.body
  * @param {Object} wind - a vector {x:number, y:number}
- * @param {number} width - Width of the canvas
- * @param {number} height - Height of the canvas
+ * @param {Object} topLeft - Top left geo point to create the map e.g. { longitude: 52.440704, latitude: 13.627919 }
+ * @param {Object} bottomRigth - Bottom right geo point to create the map e.g. { longitude: 52.441704, latitude: 13.626919 }
  * @param {number} numberOfBottles - Number of bottles in the simulation
  * @param {number} detectorAngle - Expected detection angle of the waste detector <code>-detectorAngle  <= x <= detectorAngle</code>. Default: 45°
  * @param {number} detectorRange - Expected range of the detector. Default: 80
@@ -144,7 +144,7 @@ const createSimulation = ({
       if (value < -1.0 || value > 1.0) throw 'Invalid power value.';
       velocityLeft = value * 4;
     },
-    setPowerRight(value) {
+    setPowerLeft(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid power value.';
       velocityRight = value * 4;
     }
