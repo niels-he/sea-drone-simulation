@@ -67,7 +67,7 @@ const createSimulation = ({
   detectorAngle = 45,
   detectorRange = 80
 } = {}) => {
-  const multiplier = 100000;
+  const multiplier = 1000000;
   const width = (topLeft.latitude - bottomRigth.latitude) * multiplier;
   const height = (bottomRigth.longitude - topLeft.longitude) * multiplier;
   const runner = Runner.create();
