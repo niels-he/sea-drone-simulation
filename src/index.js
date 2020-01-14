@@ -61,12 +61,15 @@ const createSimulation = ({
   loop,
   element = document.body,
   wind = DEFAULT_WIND,
-  width = 1000,
-  height = 1000,
+  topLeft = { longitude: 52.440704, latitude: 13.627919 },
+  bottomRigth = { longitude: 52.441704, latitude: 13.626919 },
   numberOfBottles = 3,
   detectorAngle = 45,
   detectorRange = 80
 } = {}) => {
+  const multiplier = 100000;
+  const width = (topLeft.latitude - bottomRigth.latitude) * multiplier;
+  const height = (bottomRigth.longitude - topLeft.longitude) * multiplier;
   const runner = Runner.create();
   const world = World.create({ gravity: { x: 0, y: 0, scale: 0 } });
   const engine = Engine.create({ world });
@@ -137,12 +140,12 @@ const createSimulation = ({
   let velocityRight = 0;
 
   const control = {
-    setVelocityLeft(value) {
-      if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
+    setPowerLeft(value) {
+      if (value < -1.0 || value > 1.0) throw 'Invalid power value.';
       velocityLeft = value * 4;
     },
-    setVelocityRight(value) {
-      if (value < -1.0 || value > 1.0) throw 'Invalid velocity value.';
+    setPowerRight(value) {
+      if (value < -1.0 || value > 1.0) throw 'Invalid power value.';
       velocityRight = value * 4;
     }
   };
@@ -150,13 +153,16 @@ const createSimulation = ({
   const position = {
     getPosition() {
       const { x, y } = boat.position;
-      return { longitude: x, latitude: y };
+      return {
+        longitude: x / multiplier + topLeft.longitude,
+        latitude: y / multiplier + bottomRigth.latitude
+      };
     },
-    getVelocityLeft() {
+    getPowerLeft() {
       const { x, y } = boat.velocityLeft;
       return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     },
-    getVelocityRight() {
+    getPowerRight() {
       const { x, y } = boat.velocityRight;
       return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     },
@@ -193,8 +199,14 @@ const createSimulation = ({
   const map = {
     getFence() {
       return [
-        { longitude: 10, latitude: 10 },
-        { longitude: width - 10, latitude: height - 10 }
+        {
+          longitude: topLeft.longitude + 10 / multiplier,
+          latitude: bottomRigth.latitude + 10 / multiplier
+        },
+        {
+          longitude: bottomRigth.longitude - 10 / multiplier,
+          latitude: topLeft.latitude - 10 / multiplier
+        }
       ];
     }
   };
@@ -233,11 +245,11 @@ const createSimulation = ({
     const { x: x2, y: y2 } = boat.vertices[boat.vertices.length - 1];
 
     const propellerPositionOne = {
-      x: x1, // > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
+      x: x1,
       y: y1
     };
     const propellerPositionTwo = {
-      x: x2, // x1 > x2 ? x2 + (x1 - x2) / 2 : x1 + (x2 - x1) / 2,
+      x: x2,
       y: y2
     };
 
