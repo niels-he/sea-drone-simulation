@@ -148,7 +148,7 @@ const createSimulation = ({
       if (value < -1.0 || value > 1.0) throw 'Invalid power value.';
       velocityLeft = value * 4;
     },
-    setPowerLeft(value) {
+    setPowerRight(value) {
       if (value < -1.0 || value > 1.0) throw 'Invalid power value.';
       velocityRight = value * 4;
     }
