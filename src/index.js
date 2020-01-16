@@ -51,7 +51,7 @@ const bottleShape = shapeFromSilhouette(BOTTLE_SILHOUETTE, 5);
  * @param {DOMElement} element - DOM element to render the simulation canvas to. Default: document.body
  * @param {Object} wind - a vector {x:number, y:number}
  * @param {Object} topLeft - Top left geo point to create the map e.g. { longitude: 52.440704, latitude: 13.627919 }
- * @param {Object} bottomRigth - Bottom right geo point to create the map e.g. { longitude: 52.441704, latitude: 13.626919 }
+ * @param {Object} bottomRight - Bottom right geo point to create the map e.g. { longitude: 52.441704, latitude: 13.626919 }
  * @param {number} numberOfBottles - Number of bottles in the simulation
  * @param {number} detectorAngle - Expected detection angle of the waste detector <code>-detectorAngle  <= x <= detectorAngle</code>. Default: 45°
  * @param {number} detectorRange - Expected range of the detector. Default: 80
@@ -62,14 +62,14 @@ const createSimulation = ({
   element = document.body,
   wind = DEFAULT_WIND,
   topLeft = { longitude: 52.440704, latitude: 13.627919 },
-  bottomRigth = { longitude: 52.441704, latitude: 13.626919 },
+  bottomRight = { longitude: 52.441704, latitude: 13.626919 },
   numberOfBottles = 3,
   detectorAngle = 45,
   detectorRange = 80
 } = {}) => {
   const multiplier = 1000000;
-  const width = (topLeft.latitude - bottomRigth.latitude) * multiplier;
-  const height = (bottomRigth.longitude - topLeft.longitude) * multiplier;
+  const width = (topLeft.latitude - bottomRight.latitude) * multiplier;
+  const height = (bottomRight.longitude - topLeft.longitude) * multiplier;
   const runner = Runner.create();
   const world = World.create({ gravity: { x: 0, y: 0, scale: 0 } });
   const engine = Engine.create({ world });
@@ -155,7 +155,7 @@ const createSimulation = ({
       const { x, y } = boat.position;
       return {
         longitude: x / multiplier + topLeft.longitude,
-        latitude: y / multiplier + bottomRigth.latitude
+        latitude: y / multiplier + bottomRight.latitude
       };
     },
     getPowerLeft() {
@@ -201,10 +201,10 @@ const createSimulation = ({
       return [
         {
           longitude: topLeft.longitude + 10 / multiplier,
-          latitude: bottomRigth.latitude + 10 / multiplier
+          latitude: bottomRight.latitude + 10 / multiplier
         },
         {
-          longitude: bottomRigth.longitude - 10 / multiplier,
+          longitude: bottomRight.longitude - 10 / multiplier,
           latitude: topLeft.latitude - 10 / multiplier
         }
       ];
